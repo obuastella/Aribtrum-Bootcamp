@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"
+        type="application/javascript"></script>
+        <script type="module" >
+            const provider = new ethers.providers.Web3Provider(window.ethereum);
+            await provider.send("eth_requestAccounts",[])
+            const signer = await provider.getSigner()
+
+            const dao_votes = new ethers.Contract("0xdD18aBDa4d09470487B46a79B88506D37784D0EC",[
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_applicantAddress",
+				"type": "address"
+			}
+		],
+		"name": "acreditation",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_candidate",
+				"type": "address"
+			}
+		],
+		"name": "candidatesAcreditation",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_candidateAddress",
+				"type": "address"
+			}
+		],
+		"name": "voteCanditate",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+] ,signer)
+console.log(await dao_votes.acreditation("0xdD18aBDa4d09470487B46a79B88506D37784D0EC") )
+        </script>
+</head>
+<body>
+    
+</body>
+</html>
